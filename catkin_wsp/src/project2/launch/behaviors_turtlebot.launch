@@ -1,0 +1,18 @@
+<launch>
+  <!-- Start Kobuki keyboard teleop (publishes Twist on /cmd_vel) -->
+  <include file="$(find kobuki_keyop)/launch/keyop.launch" /> 
+ 
+  <node pkg="nodelet" type="nodelet"
+        name="depth_to_scan"
+        args="standalone depthimage_to_laserscan/DepthImageToLaserScanNodelet">
+    <param name="output_frame_id" value="camera_depth_frame"/>
+    <remap from="image" to="/camera/depth/image_raw"/>
+    <remap from="scan" to="/scan"/>
+  </node>
+
+  <!-- Our controller: subscribes to /cmd_vel (teleop) and /odom; publishes to/mobile_base/commands/velocity -->
+  <node pkg="project2"
+        type="Behaviors_Full_Turtlebot.py"
+        name="Behaviors_Full_Turtlebot"
+        output="screen" />
+</launch>
