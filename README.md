@@ -176,10 +176,9 @@ Random turn test: let it drive ~1 ft → robot should do a small turn.
 Default forward: in open space, it should go forward.
 
 👥 Team Members
+Brandon Aviles
 
 Subhash Chandra
-
-Brandon Aviles
 
 References:
 
